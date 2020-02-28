@@ -1,5 +1,9 @@
 # Strategical Planning
 Strategical Planning Module
+as AngularJS example
+
+It works with old npm
+
 
 ## Dependencies
 Tools needed to run this app:
