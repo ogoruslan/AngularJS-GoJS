@@ -1,0 +1,90 @@
+.positions-list {
+
+  .positions-list {
+    .item-block {
+      padding-left: 30px;
+    }
+    .positions-list {
+      .item-block {
+        padding-left: 60px;
+      }
+      .positions-list {
+        .item-block {
+          padding-left: 90px;
+        }
+        .positions-list {
+          .item-block {
+            padding-left: 120px;
+          }
+          .positions-list {
+            .item-block {
+              padding-left: 150px;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .sp-user {
+    padding-right: 22px !important;
+    .md-avatar {
+      margin-right: 10px !important;
+    }
+  }
+
+  md-divider {
+    border-top-color: #eeeeee !important;
+  }
+
+  .department {
+    padding: 18px 16px 13px 26px;
+    cursor: pointer;
+
+    md-checkbox {
+      margin-bottom: 4px;
+      &.md-checked {
+        .md-icon {
+          background-color: #303f9f !important;
+        }
+      }
+    }
+
+    .counter {
+      display: inline-block;
+      background-color: #303f9f;
+      min-width: 9px;
+      height: 16px;
+      border-radius: 8px;
+      font: 12px/1.45 Roboto, "Helvetica Neue", sans-serif;
+      font-weight: 900;
+      text-align: center;
+      color: rgba(255, 255, 255, 0.87);
+      position: relative;
+      top: -1px;
+      margin-left: 7px;
+      padding: 0 3px 0 4px;
+    }
+
+    .name{
+      padding-top: 1px;
+    }
+  }
+
+
+  .expand-more, .expand-less {
+    background-image: url(/assets/strategical-planning-assets/icons/expand-more.svg);
+    width: 24px;
+    height: 24px;
+    min-width: 24px;
+    min-height: 24px;
+    display: inline-block;
+    cursor: pointer;
+    margin-top: -1px;
+    opacity: 0.54;
+  }
+
+  .expand-less {
+    background-image: url(/assets/strategical-planning-assets/icons/expand-less.svg);
+  }
+}

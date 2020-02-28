@@ -1,0 +1,19 @@
+<section class="sp-add-entity" ng-class="{expanded: $ctrl.expanded && $ctrl.spEntities.length > 0}">
+  <div class="sp-panel" layout="row" layout-align="center center">
+    <md-icon ng-if="!$ctrl.spReadOnly" ng-click="$ctrl.open($event)" md-svg-icon="add-entity"></md-icon>
+
+    <div ng-if="!$ctrl.spReadOnly || $ctrl.spEntities.length > 0" class="title" ng-click="(($ctrl.spEntities.length <= 0 || $ctrl.expanded) && !$ctrl.spReadOnly) ? $ctrl.open($event) : $ctrl.toggle()" flex>
+      <span ng-show="($ctrl.spEntities.length <= 0 || $ctrl.expanded) && !$ctrl.spReadOnly">Connect Entity</span>
+      <span class="counter" ng-if="$ctrl.spReadOnly || (!$ctrl.expanded && $ctrl.spEntities.length > 0)">{{$ctrl.spLabelCounter || 'Entities connected'}} ({{$ctrl.spEntities.length}})</span>
+    </div>
+    <span ng-if="!$ctrl.spReadOnly || $ctrl.spEntities.length > 0" ng-show="$ctrl.spEntities.length > 0" ng-click="$ctrl.toggle()" class="expand-more" ng-class="{'expand-more': !$ctrl.expanded, 'expand-less': $ctrl.expanded}"></span>
+
+    <div ng-if="$ctrl.spReadOnly && $ctrl.spEntities.length <= 0" flex>
+      <span class="counter">{{$ctrl.spLabelNoEntities || 'No entities connected'}}</span>
+    </div>
+
+  </div>
+  <span ng-show="$ctrl.expanded" ng-repeat="entity in $ctrl.spEntities | orderBy:'-'">
+    <sp-entity sp-linkable="$ctrl.spReadOnly" sp-entity="entity" sp-deletable="!$ctrl.spReadOnly" on-delete="$ctrl.removeEntity(event, entity)"></sp-entity>
+  </span>
+</section>

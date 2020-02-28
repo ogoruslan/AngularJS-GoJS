@@ -1,0 +1,22 @@
+<section ng-repeat="item in $ctrl.positions" class="positions-list">
+  <span ng-show="$ctrl.counter[item.nodeId] && $ctrl.counter[item.nodeId].length > 0 || $ctrl.compareWithSearchString(item, $ctrl.spSearchString)">
+    <section class="item-block">
+      <div ng-click="$ctrl.hidden[item.nodeId] = !$ctrl.hidden[item.nodeId]" ng-if="item.department && $ctrl.counter[item.nodeId].length > 0" class="department" layout="row">
+        <md-checkbox ng-checked="$ctrl.counterSelected[item.nodeId].length === $ctrl.counter[item.nodeId].length" ng-click="$ctrl.selectedGroup[item.nodeId] = !$ctrl.selectedGroup[item.nodeId]; $event.stopPropagation()" class="md-primary" aria-label="Department"></md-checkbox>
+        <div class="name" flex>{{(item.department.departmentName.length > 65) ? item.department.departmentName.slice(0,65) + "..." : item.department.departmentName}} <span class="counter" ng-if="$ctrl.counterSelected[item.nodeId] && $ctrl.counterSelected[item.nodeId].length > 0">{{$ctrl.counterSelected[item.nodeId].length}}</span></div>
+        <span class="expand-more" ng-class="{'expand-more': !$ctrl.spSearchString && $ctrl.hidden[item.nodeId], 'expand-less': !(!$ctrl.spSearchString && $ctrl.hidden[item.nodeId])}"></span>
+      </div>
+      <sp-user ng-if="item.position" sp-selectable="true" sp-with-permissions="true" sp-select="$ctrl.selected[item.nodeId]" on-select="$ctrl.selectUser(selected, item)" sp-position="item.position"></sp-user>
+    </section>
+    <md-divider ng-if="!item.department || (item.department && $ctrl.counter[item.nodeId].length > 0)"></md-divider>
+  </span>
+  <positions-list ng-hide="$ctrl.hidden[item.nodeId]"
+          sp-positions="$ctrl.spPositions"
+          sp-selected-group="$ctrl.selectedGroup[item.nodeId]"
+          sp-root-id="item.nodeId"
+          sp-search-string="$ctrl.spSearchString"
+          sp-selected-items="$ctrl.spSelectedItems"
+          on-positions="$ctrl.getPositions(positions, item)"
+          on-selected-positions="$ctrl.getSelectedPositions(positions, item)"
+  ></positions-list>
+</section>

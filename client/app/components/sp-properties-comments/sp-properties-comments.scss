@@ -1,0 +1,232 @@
+$form-style-color: rgb(48, 63, 159);
+$form-font-color: #939393;
+
+sp-properties md-content sp-properties-comments md-list md-list-item.md-no-proxy {
+  padding: 8px 24px;
+}
+
+sp-properties-comments {
+  md-input-container {
+    margin: 30px 0 18px;
+    width: 100%;
+
+    .md-errors-spacer {
+      visibility: hidden;
+    }
+
+    button.sp-add-comment {
+      color: $form-style-color;
+      font-size: 14px;
+      width: auto;
+      height: 30px;
+      line-height: 17px;
+      background: none;
+      border: none;
+      outline: none;
+      text-align: left;
+      margin: 20px 0 0;
+      padding: 0 5px;
+      min-width: 1px;
+
+      &:active,
+      &:focus,
+      &:hover {
+        color: $form-style-color;
+        outline: none;
+        background-color: transparent;
+      }
+
+      &:not([disabled]):hover {
+        background-color: transparent;
+      }
+
+      &:disabled {
+        color: rgba(147, 147, 147, 0.74);
+      }
+    }
+  }
+
+  md-input-container.md-input-focused,
+  md-input-container.md-input-has-value {
+    .md-errors-spacer {
+      visibility: visible;
+    }
+  }
+
+  .sp-comments-button {
+    position: relative;
+    padding: 0 20px;
+    color: $form-font-color;
+
+    .commentForm{
+      padding-left: 5px;
+    }
+    button {
+      font-size: 16px;
+      width: 100%;
+      height: 70px;
+      line-height: 70px;
+      background: none;
+      border: none;
+      outline: none;
+      text-align: left;
+      padding: 0px 0px 0px 4px;
+
+      .sp-has-data-color {
+        color: rgba(0, 0, 0, 0.87);
+      }
+
+      .sp-no-data-color {
+        color: #939393;
+      }
+
+      span:focus {
+        outline: none;
+      }
+    }
+
+
+    md-icon.md-icon-25 {
+      cursor: pointer;
+      position: absolute;
+      top: 0;
+      right: 18px;
+      z-index: 1000;
+      transition: all 0.2s linear;
+      margin: 22px 0;
+      float: right;
+      opacity: 0.6;
+      color: #000;
+      -ms-transform: rotate(180deg);
+      -webkit-transform: rotate(180deg);
+      transform: rotate(180deg);
+
+      &:focus {
+        outline: none;
+      }
+    }
+  }
+
+  .sp-comments-container {
+    background-color: #fff;
+    // transition: height 0.3s linear;
+    height: 70px;
+
+    // Comments icon
+    .sp-comments-icon {
+      float: left;
+      cursor: pointer;
+      width: 32px;
+      height: 32px;
+      margin: 20px 8px 0 0;
+
+      &:active,
+      &:focus {
+        outline: none;
+      }
+    }
+
+    // Attention icon
+    .sp-attention-icon {
+      width: 32px;
+      height: 32px;
+      margin-right: 5px;
+    }
+  }
+
+  .sp-comments-container.sp-open-collapsible {
+    background-color: #FAFAFA;
+    height: 100%;
+
+    .sp-expandable-content {
+      display: block;
+    }
+
+      md-icon.md-icon-25 {
+        -ms-transform: rotate(0deg);
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+      }
+  }
+
+  .sp-scroolHeight{
+    overflow-y: scroll;
+    .sp-expandable-content{
+      max-height: 420px;
+    }
+  }
+  .sp-expandable-content {
+    padding: 0;
+    z-index: 1;
+    background-color: #FAFAFA;
+    display: none;
+
+    md-input-container.collapsible-property {
+      width: 100%;
+      padding: 0;
+
+      .md-placeholder,
+      label:not(.md-no-float):not(.md-container-ignore) {
+        margin-bottom: 5px;
+      }
+    }
+    md-input-container label:not(.md-no-float):not(.md-container-ignore), md-input-container .md-placeholder {
+      color:#303f9f;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      width: 100%;
+      padding-left: 3px;
+      padding-right: 0;
+      transform: translate3d(0, -28px, 0) scale(0.75);
+      transition: -webkit-transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+      max-width: 100%;
+      -webkit-transform-origin: left top;
+      transform-origin: left top;
+    }
+    label:not(.md-no-float):not(.md-container-ignore),
+    &.md-input-has-placeholder label:not(.md-no-float):not(.md-container-ignore),
+    .md-placeholder,
+    &.md-input-has-placeholder .md-placeholder{
+      transform: translate3d(0, 0, 0) scale(1);
+    }
+
+    &.md-input-focused label:not(.md-no-float),
+    &.md-input-has-placeholder label:not(.md-no-float),
+    &.md-input-has-value label:not(.md-no-float),
+    &.sp-input-has-value label:not(.md-no-float),
+    &.md-input-focused.md-input-has-placeholder label:not(.md-no-float),
+    &.md-input-has-value.md-input-has-placeholder label:not(.md-no-float),
+    &.sp-input-has-value.md-input-has-placeholder label:not(.md-no-float) {
+      transform: translate3d(0, 0, 0) scale(0.75);
+    }
+
+    &.sp-input-no-value {
+      padding-top: 0;
+      &.md-input-focused label:not(.md-no-float),
+      &.md-input-has-placeholder label:not(.md-no-float),
+      &.md-input-focused.md-input-has-placeholder label:not(.md-no-float){
+        transform: translate3d(0, 0, 0) scale(0.75);
+      }
+      label:not(.md-no-float):not(.md-container-ignore){
+        transform: translate3d(0, 0, 0) scale(1);
+      }
+      &.sp-input-has-value,
+      &.md-input-focused {
+        padding-top: 22px;
+      }
+    }
+
+    md-list {
+      background-color: transparent;
+    }
+  }
+  // Remove animation causing delay when hiding elements
+  .sp-comments-container.ng-hide,
+  .sp-comments-container.ng-hide.ng-animate {
+    transition: 0s none;
+    -webkit-transition: 0s none;
+    animation: 0s none;
+    -webkit-animation: 0s none;
+  }
+}

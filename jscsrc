@@ -1,0 +1,40 @@
+{
+	"disallowImplicitTypeConversion": ["numeric", "boolean", "binary", "string"],
+	"disallowKeywordsOnNewLine": ["else", "catch", "finally"],
+	"disallowMixedSpacesAndTabs": true,
+	"disallowMultipleLineBreaks": true,
+	"disallowMultipleLineStrings": true,
+	"disallowMultipleSpaces": true,
+	"disallowNewlineBeforeBlockStatements": true,
+	"disallowOperatorBeforeLineBreak": ["."],
+	"disallowSpaceAfterObjectKeys": true,
+	"disallowSpaceAfterPrefixUnaryOperators": ["++", "--", "+", "-", "~", "!"],
+	"disallowSpaceBeforePostfixUnaryOperators": ["++", "--"],
+	"disallowSpacesInCallExpression": true,
+	"disallowTrailingComma": true,
+	"disallowTrailingWhitespace": true,
+	"disallowYodaConditions": true,
+	"requireBlocksOnNewline": 1,
+	"requireCommaBeforeLineBreak": true,
+	"requireDollarBeforejQueryAssignment": true,
+	"requireParenthesesAroundIIFE": true,
+	"requireSemicolons": true,
+	"requireSpaceAfterKeywords": ["do", "for", "if", "else", "switch", "case", "try", "catch", "void", "while", "with", "return", "typeof", "function"],
+	"requireSpaceBeforeBinaryOperators": ["=", "+", "-", "/", "*", "==", "===", "!=", "!=="],
+	"requireSpaceBeforeBlockStatements": true,
+	"requireSpaceBeforeKeywords": ["else", "while", "catch"],
+	"requireSpaceBetweenArguments": true,
+	"requireSpacesInConditionalExpression": {
+		"afterTest": true,
+		"beforeConsequent": true,
+		"afterConsequent": true,
+		"beforeAlternate": true
+	},
+	"requireSpacesInForStatement": true,
+	"requireSpacesInFunction": {
+		"beforeOpeningRoundBrace": true,
+		"beforeOpeningCurlyBrace": true
+	},
+	"validateIndentation": "\t",
+	"validateParameterSeparator": ", "
+}

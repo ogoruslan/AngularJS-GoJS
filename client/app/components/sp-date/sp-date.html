@@ -1,0 +1,14 @@
+<md-input-container class="layout-row">
+    <md-datepicker  class="sp-date"
+                    ng-change="$ctrl.onDateChanged()"
+                    ng-class="$ctrl.getDateStyle($ctrl.spData)"
+                    ng-model="$ctrl.spData.dueDate"
+                    md-min-date="$ctrl.minDate"
+                    md-hide-icons = "all"
+                    md-open-on-focus
+                    md-placeholder="Due date"
+                    ng-click="$ctrl.isOpen=true"
+                    md-is-open="$ctrl.isOpen"
+    ></md-datepicker>
+    <md-button ng-show="$ctrl.spData.dueDate !== undefined && $ctrl.spData.dueDate !== null" ng-click="$ctrl.spData.dueDate = undefined; $ctrl.onDateChanged()">X</md-button>
+</md-input-container>

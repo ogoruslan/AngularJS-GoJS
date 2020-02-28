@@ -1,0 +1,193 @@
+$form-style-color: rgb(48, 63, 159);
+$form-font-color: #939393;
+
+bp-properties md-content bp-properties-comments md-list md-list-item.md-no-proxy {
+  padding: 8px 24px;
+}
+
+bp-properties-comments {
+  md-input-container {
+    margin: 30px 0 18px;
+    width: 100%;
+
+    .md-errors-spacer {
+      visibility: hidden;
+    }
+
+    button.bp-add-comment {
+      color: $form-style-color;
+      font-size: 14px;
+      width: auto;
+      height: 30px;
+      line-height: 17px;
+      background: none;
+      border: none;
+      outline: none;
+      text-align: left;
+      margin: 20px 0 0;
+      padding: 0 5px;
+      min-width: 1px;
+
+      &:active,
+      &:focus,
+      &:hover {
+        color: $form-style-color;
+        outline: none;
+        background-color: transparent;
+      }
+
+      &:not([disabled]):hover {
+        background-color: transparent;
+      }
+
+      &:disabled {
+        color: rgba(147, 147, 147, 0.74);
+      }
+    }
+  }
+
+  md-input-container.md-input-focused,
+  md-input-container.md-input-has-value {
+    .md-errors-spacer {
+      visibility: visible;
+    }
+  }
+
+  .bp-comments-button {
+    position: relative;
+    padding: 0 20px;
+    color: $form-font-color;
+
+    button {
+      font-size: 16px;
+      width: 100%;
+      height: 70px;
+      line-height: 70px;
+      background: none;
+      border: none;
+      outline: none;
+      text-align: left;
+
+      .bp-has-data-color {
+        color: rgba(0, 0, 0, 0.87);
+      }
+
+      .bp-no-data-color {
+        color: #939393;
+      }
+
+      span:focus {
+        outline: none;
+      }
+    }
+
+
+    md-icon.md-icon-25 {
+      cursor: pointer;
+      position: absolute;
+      top: 0;
+      right: 24px;
+      z-index: 1000;
+      transition: all 0.2s linear;
+      margin: 22px 0;
+      float: right;
+      color: #000;
+      -ms-transform: rotate(180deg);
+      -webkit-transform: rotate(180deg);
+      transform: rotate(180deg);
+
+      &:focus {
+        outline: none;
+      }
+    }
+  }
+
+  .bp-comments-container {
+    background-color: #fff;
+    // transition: height 0.3s linear;
+    height: 70px;
+
+    // Comments icon
+    .bp-comments-icon {
+      float: left;
+      cursor: pointer;
+      line-height: 32px;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background-color: #E5E3E9;
+      margin: 20px 10px 0 0;
+      transform: scaleX(-1);
+      -moz-transform: scaleX(-1);
+      -webkit-transform: scaleX(-1);
+      -ms-transform: scaleX(-1);
+
+      &:active,
+      &:focus {
+        outline: none;
+      }
+
+      svg {
+        width: 18px;
+        height: 18px;
+        margin: 8px auto 0;
+      }
+    }
+
+    // Attention icon
+    .bp-attention-icon {
+      width: 32px;
+      height: 32px;
+      margin-right: 5px;
+    }
+  }
+
+  .bp-comments-container.bp-open-collapsible {
+    background-color: #FAFAFA;
+    height: 100%;
+
+    .bp-expandable-content {
+      max-height: 420px;
+      display: block;
+    }
+
+      md-icon.md-icon-25 {
+        -ms-transform: rotate(0deg);
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+      }
+  }
+
+  .bp-exp-container {
+    overflow: hidden;
+  }
+
+  .bp-expandable-content {
+    padding: 0;
+    z-index: 1;
+    background-color: #FAFAFA;
+    display: none;
+
+    md-input-container.collapsible-property {
+      width: 100%;
+      padding: 0;
+
+      .md-placeholder,
+      label:not(.md-no-float):not(.md-container-ignore) {
+        margin-bottom: 5px;
+      }
+    }
+
+    md-list {
+      background-color: transparent;
+    }
+  }
+  // Remove animation causing delay when hiding elements
+  .bp-comments-container.ng-hide,
+  .bp-comments-container.ng-hide.ng-animate {
+    transition: 0s none;
+    -webkit-transition: 0s none;
+    animation: 0s none;
+    -webkit-animation: 0s none;
+  }
+}

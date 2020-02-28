@@ -1,0 +1,18 @@
+<section class="sp-assign-user" ng-class="{expanded: $ctrl.expanded && $ctrl.spPositions.length > 0}">
+  <div class="sp-panel" layout="row" layout-align="center center">
+    <md-icon ng-click="$ctrl.spPermission && $ctrl.open($event)" md-svg-icon="user-assign"></md-icon>
+    <div class="title" ng-click="($ctrl.spPositions.length <= 0 || $ctrl.expanded) ? ($ctrl.spPermission && $ctrl.open($event)) : $ctrl.toggle()" flex>
+      <span ng-show="$ctrl.spPositions.length <= 0 || $ctrl.expanded">Assign User</span>
+      <div class="sp-icons-block" ng-if="!$ctrl.expanded" ng-repeat="position in $ctrl.spPositions.slice(0, 3)">
+        <img ng-if="!$ctrl.expanded" class="sp-icon" alt="{{position.position.users[0]}}" ng-src="{{position.position.users[0].avatarFileId || ((!position.position.users[0].userId) ? '/assets/strategical-planning-assets/icons/user-invited.svg' : '/assets/strategical-planning-assets/icons/no-user.svg')}}">
+        <div class="sp-owner-block" ng-if="position.position.permission === 'OWNER'"><span>Owner</span></div>
+      </div>
+      <span class="counter" ng-if="!$ctrl.expanded && $ctrl.spPositions.length > 3">+{{$ctrl.spPositions.length - 3}}</span>
+    </div>
+    <span ng-show="$ctrl.spPositions.length > 0" ng-click="$ctrl.toggle()" class="expand-more" ng-class="{'expand-more': !$ctrl.expanded, 'expand-less': $ctrl.expanded}"></span>
+  </div>
+  <span ng-show="$ctrl.expanded" ng-repeat="position in $ctrl.spPositions | orderBy:'-'">
+    <sp-user sp-position="position.position" sp-with-permissions="$ctrl.spPermission" sp-deletable="$ctrl.spPermission" on-delete="$ctrl.removePosition(event, position)" on-permission-changed="$ctrl.permissionChanged(event,position)"></sp-user>
+  </span>
+</section>
+

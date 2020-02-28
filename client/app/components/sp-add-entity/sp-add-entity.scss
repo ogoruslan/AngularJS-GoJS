@@ -1,0 +1,118 @@
+.sp-add-entity {
+  transition: background .4s cubic-bezier(.25, .8, .25, 1) !important;
+
+  * {
+    outline: none !important;
+  }
+
+  &.expanded {
+    background: rgba(#e8e8e8,0.2);
+  }
+
+  .sp-panel {
+    padding: 20px 18px 20px 24px;
+    color: #939393;
+    md-icon, .sp-icon {
+      cursor: pointer;
+      width: 32px;
+      height: 32px;
+      max-width: 32px;
+      max-height: 32px;
+      margin-right: 8px;
+    }
+
+    .sp-icon {
+      display: block;
+      float: left;
+      margin: 0 8px;
+    }
+    .counter {
+      display: block;
+      float: left;
+      line-height: 32px;
+      color: rgba(0, 0, 0, 0.87);
+    }
+    .title {
+      cursor: pointer;
+    }
+  }
+
+  .md-avatar {
+    margin-right: 8px !important;
+  }
+
+  .expand-more, .expand-less {
+    margin-left: 60px;
+    background-image: url(/assets/strategical-planning-assets/icons/expand-more.svg);
+    background-position: center center;
+    width: 24px;
+    height: 32px;
+    min-width: 24px;
+    min-height: 32px;
+    display: inline-block;
+    cursor: pointer;
+    margin-top: -1px;
+    opacity: 0.54;
+  }
+
+  .expand-less {
+    background-image: url(/assets/strategical-planning-assets/icons/expand-less.svg);
+  }
+}
+
+.sp-add-entity-dialog {
+  height: 100%;
+  max-height: 600px;
+  position: relative;
+
+  .header-container {
+    position: absolute;
+    top: 0;
+    width: 100%;
+  }
+
+  .footer-container {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+  }
+
+  .content-container {
+    position: absolute;
+    top: 140px;
+    bottom: 110px;
+    width: 100%;
+  }
+
+  .designation {
+    font: 16px/1.25 Roboto, "Helvetica Neue", sans-serif;
+    text-align: center;
+    color: rgba(49, 49, 49, 0.87);
+    padding: 20px 0 30px;
+  }
+
+  .title {
+    font: 32px/1.25 Roboto, "Helvetica Neue", sans-serif;
+    text-align: center;
+    color: rgba(0, 0, 0, 0.87);
+    padding-bottom: 40px;
+  }
+
+  sp-select-widget {
+    max-width: 780px;
+    margin: 0 auto;
+    height: 100%;
+  }
+
+  .button-submit {
+    display: block;
+    background-color: #4caf50;
+    color: #ffffff;
+    width: 230px;
+    height: 60px;
+    margin: 0 auto;
+    &:not([disabled=disabled]):hover {
+      background-color: rgba(#4caf50, 0.9) !important;
+    }
+  }
+}

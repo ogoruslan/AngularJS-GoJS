@@ -1,0 +1,329 @@
+cm-login {
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-align-content: center;
+  align-content: center;
+  max-width: 100%;
+  min-height: 100%;
+  height: 100%;
+}
+
+#authentication {
+  min-height: 100%;
+  height: 100%;
+  background-color: rgb(63,81,181);
+}
+
+#authentication md-input-container label {
+  margin-bottom: 3.3px;
+}
+
+#authentication md-input-container input {
+  padding-bottom: 8px;
+}
+
+#authentication > div {
+  background-color: #ffffff;
+  border-radius: 2px;
+}
+
+#authentication md-whiteframe {
+  height: 100%;
+}
+
+#authentication md-list {
+  padding: 0 0 !important;
+}
+
+#authentication md-list-item {
+  padding: 0 0 !important;
+  max-height: 10% !important;
+}
+
+/*#authentication .captureMgrLogoContainer {*/
+/*margin-top: 7.35%;*/
+/*}*/
+
+#authentication #captureMgrLogo {
+  margin: 0 0 !important;
+  height: 105px !important;
+  width: 230px !important;
+  padding-bottom: 20px;
+  padding-top: 10px;
+}
+
+#authentication md-list md-input-container, #authentication md-list md-input-container input {
+  width: 328px !important;
+  margin: 0 auto;
+}
+
+#authentication md-input-container input {
+  margin-bottom: 4.6px;
+}
+
+#authentication md-input-container > div {
+  width: 333px;
+}
+
+#authentication .loginErrorIcon {
+  margin-top: -2px;
+  font-size: 18.5px;
+  float: right;
+}
+
+#authentication .textBtn {
+  font-weight: 500;
+  font-family: Roboto;
+  font-size: 14px;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.43;
+  letter-spacing: normal;
+}
+
+#authentication .submitContainerLi .submitBtn {
+  background-color: #679e37;
+  color: #ffffff;
+  width: 330px;
+  height: 60px;
+}
+
+#authentication #noAccountSignUpDiv span, #authentication #haveAnAccountSignInDiv span, #authentication #backToSignInDiv span {
+  cursor: pointer;
+  margin-left: 9.5px;
+  outline: none;
+  color: rgba(103, 58, 183, 0.87);
+}
+
+#authentication md-list-item .md-list-item-inner:before, #authentication md-list-item:before {
+  min-height: 34px !important;
+}
+
+/*********************************************************************** LOGIN *****************************************************************/
+#loginBlock {
+  min-width: 605px;
+}
+
+.loginBlockHeight {
+  height: 515px;
+}
+
+.loginBlockHeightWithErrors {
+  height: 675px;
+}
+
+#loginBlock .loginErrorMessage {
+  margin-top: 3.7%;
+}
+
+/*#loginBlock .emailContainerLi {*/
+/*margin-top: 6.17%;*/
+/*}*/
+
+#loginBlock .errorEmailContainerLi {
+  margin-top: 5.17%;
+}
+
+#loginBlock .passwordContainerLi {
+  margin-top: 0%;
+}
+
+#loginBlock .errorPasswordContainerLi {
+  margin-top: -1%;
+}
+
+#loginBlock .passwordContainerLi .forgot, #loginBlock .errorPasswordContainerLi .forgot {
+  cursor: pointer;
+  position: absolute;
+  right: 8.6px;
+  top: 2.7px;
+  float: right;
+  outline: none;
+  width: 47px;
+  height: 20px;
+  color: rgba(103, 58, 183, 0.87);
+}
+
+#loginBlock .rememberMeDiv {
+  margin-left: 23.1%;
+  margin-right: 22.5%;
+  margin-top: 0.7%;
+  color: rgba(49, 49, 49, 0.87);
+}
+
+#loginBlock .errorRememberMeDiv {
+  margin-left: 23.1%;
+  margin-right: 22.5%;
+  margin-top: -0.4%;
+}
+
+/*#loginBlock .submitContainerLi {*/
+/*margin-top: 6.5%;*/
+/*}*/
+
+#loginBlock #noAccountSignUpDiv {
+  margin-top: 2.5%;
+}
+
+/************************************************************************ REGISTER ******************************************************/
+
+#registerBlock {
+  min-width: 605px;
+}
+
+.registerBlockHeight {
+  height: 713px;
+}
+
+.registerBlockHeightWithErrors {
+  height: 750px;
+}
+
+/*#registerBlock .emailContainerLi {*/
+/*margin-top: 6.5%;*/
+/*}*/
+
+/*#registerBlock .errorEmailContainerLi {*/
+/*margin-top: 4.17%;*/
+/*}*/
+
+/*#registerBlock .companyContainerLi {*/
+/*margin-top: -0.8%;*/
+/*}*/
+
+/*#registerBlock .errorCompanyContainerLi {*/
+/*margin-top: -1.7%;*/
+/*}*/
+
+/*#registerBlock .passwordContainerLi {*/
+/*margin-top: -0.5%;*/
+/*}*/
+
+/*#registerBlock .errorPasswordContainerLi {*/
+/*margin-top: -2%;*/
+/*}*/
+
+/*#registerBlock .confirmPasswordContainerLi {*/
+/*margin-top: -0.5%;*/
+/*}*/
+
+/*#registerBlock .errorConfirmPasswordContainerLi {*/
+/*margin-top: -2%;*/
+/*}*/
+
+/*#registerBlock .submitContainerLi {*/
+/*margin-top: 1%;*/
+/*}*/
+
+#registerBlock #haveAnAccountSignInDiv {
+  margin-top: 3%;
+  text-align: center;
+}
+
+/*#registerBlock .registerErrorMessage {*/
+/*margin-top: 3.7%;*/
+/*}*/
+
+/*********************************************************************VERIFY EMAIL BLOCK **********************************************************************/
+
+#verifyEmailBlock {
+  width: 605px;
+  height: 432px;
+}
+
+#verifyEmailBlock p {
+  margin-top: 5%;
+  height: 40px;
+  width: 50%;
+  line-height: 1.25;
+  text-align: center;
+  font-size: 16px;
+  color: rgba(49, 49, 49, 0.87);
+}
+
+#verifyEmailBlock #backToSignInDiv {
+  margin-top: 5.5%;
+}
+
+/*********************************************************************** FORGOT PASSWORD ***************************************************************************/
+
+#forgotPasswordBlock {
+  min-width: 605px;
+  height: 538px;
+}
+
+#forgotPasswordBlock p {
+  margin-top: 5%;
+  height: 40px;
+  width: 56%;
+  line-height: 1.25;
+  text-align: center;
+  font-size: 16px;
+  color: rgba(49, 49, 49, 0.87);
+}
+
+#forgotPasswordBlock #emailContainerDiv {
+
+  width: 100%;
+}
+
+#forgotPasswordBlock #backToSignInDiv {
+  margin-top: 3%;
+}
+
+/******************************************************************** FORGOT PASSWORD MESSAGE BLOCK *************************************/
+
+#forgotPasswordMessageBlock {
+  min-width: 605px;
+  height: 432px;
+}
+
+#forgotPasswordMessageBlock p {
+  font-family: Roboto;
+  margin-top: 5%;
+  height: 20px;
+  width: 53%;
+  line-height: 1.25;
+  text-align: center;
+  font-size: 16px;
+  color: rgba(49, 49, 49, 0.87);
+}
+
+#forgotPasswordMessageBlock #backToSignInDiv {
+  margin-top: 8%;
+}
+
+/********************************************************************* CHANGE PASSWORD BLOCK ********************************************/
+
+#changePasswordBlock {
+  min-width: 605px;
+  height: 631px;
+}
+
+#changePasswordBlock p {
+  font-family: Roboto;
+  margin-top: 5%;
+  height: 20px;
+  width: 53%;
+  line-height: 1.25;
+  text-align: center;
+  font-size: 16px;
+  color: rgba(49, 49, 49, 0.87);
+}
+
+#changePasswordBlock #passwordContainerDiv {
+  margin-top: 4%;
+}
+
+#changePasswordBlock #confirmPasswordContainerDiv {
+  margin-top: -1%;
+}
+
+#changePasswordBlock .submitContainerLi {
+  margin-top: 1.5%;
+}
+
+#changePasswordBlock #backToSignInDiv {
+  margin-top: 2.8%;
+}

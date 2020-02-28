@@ -1,0 +1,14 @@
+<!--
+Call component like <bp-properties-comments></bp-properties-comments> and passing bp-comments and on-comments-changed params.
+
+bp-comments param is actual comments data which you would get when calling comments api - getCommentsAPI function in test-data.js file
+on-comments-changed is callback which is fired inside the bp-properties-comments component in saveComments function.
+
+-->
+
+<div ng-show="!$ctrl.disabledFields.comments">
+  <bp-properties-comments bp-comments="$ctrl.data.comments"
+                          on-comments-changed="$ctrl.changed(whatIsChanged)"
+  ></bp-properties-comments>
+  <md-divider></md-divider>
+</div>

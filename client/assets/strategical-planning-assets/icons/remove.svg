@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="12px" height="17px" viewBox="0 0 12 17" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 44 (41411) - http://www.bohemiancoding.com/sketch -->
+    <title>delete</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="controls-panel-copy-5" transform="translate(-162.000000, -15.000000)" fill="#FFFFFF">
+            <path d="M163,30 L163,20 L173,20 L173,30 C173,31.2285714 172.25,32 171,32 L165,32 C163.75,32 163,31.2285714 163,30 Z M165,28.6666667 C165,29.4857143 165.45,30 166.2,30 L169.8,30 C170.55,30 171,29.4857143 171,28.6666667 L171,22 L165,22 L165,28.6666667 Z M162,18 L162,16 L165,16 L166,15 L170,15 L171,16 L174,16 L174,18 L162,18 Z" id="delete"></path>
+        </g>
+    </g>
+</svg>

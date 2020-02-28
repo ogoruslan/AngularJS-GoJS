@@ -1,0 +1,70 @@
+<!-- ADDED COMMENT -->
+<md-list-item ng-if="!$ctrl.spIsDeleted && !$ctrl.isEditing" class="md-3-line md-no-proxy sp-list-item-hover"
+              flex="100">
+
+  <img ng-src="{{ $ctrl.spCreatedByAvatar }}" class="md-avatar"/>
+  <div class="md-list-item-text" layout="column">
+
+    <!-- USER NAME -->
+    <h3>{{ $ctrl.spCreatedByFirstname + ' ' + $ctrl.spCreatedByLastname }}</h3>
+
+    <!-- COMMENT DATE CREATED -->
+    <p ng-if="!$ctrl.spShowActions" class="sp-date-created">
+      {{ $ctrl.spDateCreated | date : 'h:mma'}}
+    </p>
+
+    <!-- EDIT & DELETE BUTTONS -->
+    <div ng-if="$ctrl.spShowActions" class="sp-comment-actions">
+      <md-icon class="md-icon-25" md-svg-icon="sp-edit" ng-click="$ctrl.startEditing();"></md-icon>
+      <md-icon class="md-icon-25" md-svg-icon="sp-delete" ng-click="$ctrl.deleteComment();"></md-icon>
+    </div>
+
+    <!-- USER POSITION & COMMENT TEXT -->
+    <h4>{{ $ctrl.spCreatedByPosition }}</h4>
+    <p class="sp-text">{{ $ctrl.spText }}
+      <span ng-if="$ctrl.spDateUpdated "> (Edited)
+          <md-tooltip md-direction="bottom">
+          {{ $ctrl.spDateUpdated | date : "yyyy-MM-dd 'at' h:mma"}}
+        </md-tooltip>
+        </span>
+    </p>
+  </div>
+</md-list-item>
+
+<!-- REMOVED COMMENT -->
+<md-list-item ng-if="$ctrl.spIsDeleted" class="md-3-line _md-button-wrap sp-removed-comment" flex="100">
+  <div class="md-list-item-text" layout="column">
+    <h4> >> <span>{{ $ctrl.spText  }}</span> << was removed </h4>
+    <md-icon class="md-icon-25" md-svg-icon="sp-refresh" ng-click="$ctrl.restoreComment();"></md-icon>
+  </div>
+</md-list-item>
+
+<!-- EDITED COMMENT -->
+<md-list-item ng-if="$ctrl.isEditing"
+              ng-style="{'border-bottom' : $ctrl.spIsLast ? 'none' : '1px solid rgba(0, 0, 0, 0.12)'}"
+              class="md-3-line _md-button-wrap sp-comments-padding sp-edit-comment" flex="100">
+
+  <form flex="100" name="editForm" novalidate>
+    <md-input-container class="md-block" flex-gt-sm>
+
+      <label>Edit comment</label>
+      <textarea name="editText" ng-model="$ctrl.spText" md-maxlength=500 maxlength="500"
+                aria-label="Edit comment"
+                required
+      ></textarea>
+
+      <div ng-messages>
+        <div ng-if="$ctrl.spText.length === 500">Character limit exceeded</div>
+      </div>
+
+      <md-button
+        ng-disabled="!editForm.$dirty || !$ctrl.spText.trim() ||  !$ctrl.spText || editForm.$invalid"
+        class="sp-add-comment"
+        ng-click="$ctrl.saveEditing();">Save
+      </md-button>
+      <md-button class="sp-add-comment" ng-click="$ctrl.endEditing();">Cancel
+      </md-button>
+
+    </md-input-container>
+  </form>
+</md-list-item>

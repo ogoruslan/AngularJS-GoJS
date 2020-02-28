@@ -1,0 +1,86 @@
+<div title="{{$ctrl.spDraggable ? 'You can drag it on the diagram to assign':''}}" class="sp-user md-2-line" ng-click="$ctrl.spSelectable && $ctrl.toggle()" ng-class="{'sp-user-draggable': $ctrl.spDraggable, 'sp-user-selectable': $ctrl.spSelectable, 'sp-user-deletable': $ctrl.spDeletable && !$ctrl.userMode, restore: $ctrl.user && $ctrl.user.removed}">
+
+  <div ng-if="$ctrl.spDraggable && $ctrl.inited && $ctrl.user && !$ctrl.user.removed" class="sp-user-draggable"
+       draggable="true"
+       ondragstart="angular.element(this).scope().dragstart(event)"
+       ondragend="angular.element(this).scope().dragend(event)"
+  >
+    <div class="sp-user-draggable-box">
+      <div class="sp-user-draggable-avatar">
+        <img ng-show="!$ctrl.spSelect && (!$ctrl.user || $ctrl.inviteAccepted)" ng-src="{{$ctrl.user.avatarFileId || '/assets/strategical-planning-assets/icons/avatar.svg'}}" class="md-avatar" alt="{{user.firstName + ' ' + user.lastName}}"/>
+        <img ng-show="!$ctrl.spSelect && $ctrl.user && !$ctrl.inviteAccepted" src="/assets/strategical-planning-assets/icons/user-invited.svg" class="md-avatar" alt=""/>
+      </div>
+      <div class="sp-user-draggable-name">
+        <h3 ng-if="$ctrl.user && $ctrl.inviteAccepted">{{$ctrl.user.firstName + ' ' + $ctrl.user.lastName}}</h3>
+        <h3 ng-if="$ctrl.userMode && $ctrl.user && !$ctrl.inviteAccepted">{{$ctrl.user.email}}</h3>
+      </div>
+    </div>
+  </div>
+
+  <div class="sp-user-back"></div>
+
+  <span ng-if="$ctrl.spDeletable && $ctrl.userMode">
+    <div ng-if="!$ctrl.inviteAccepted" class="button-remove" ng-click="$ctrl.remove($event)">
+      <md-icon md-svg-icon="close-small">
+        <md-tooltip md-direction="bottom">Cancel invitation</md-tooltip>
+      </md-icon>
+    </div>
+    <div ng-if="$ctrl.inviteAccepted && !$ctrl.user.removed" class="button-remove" ng-click="$ctrl.remove($event)">
+      <md-icon md-svg-icon="remove">
+        <md-tooltip md-direction="bottom">Remove user from position</md-tooltip>
+      </md-icon>
+    </div>
+    <div ng-if="$ctrl.inviteAccepted && $ctrl.user.removed" class="button-remove" ng-click="$ctrl.restore($event)">
+      <md-icon md-svg-icon="restore">
+        <md-tooltip md-direction="bottom">Restore user to position</md-tooltip>
+      </md-icon>
+    </div>
+  </span>
+  <div class="sp-icons-block">
+    <img ng-show="!$ctrl.spSelect && (!$ctrl.user || $ctrl.inviteAccepted)" ng-src="{{$ctrl.user.avatarFileId || '/assets/strategical-planning-assets/icons/no-user.svg'}}" class="md-avatar" alt="{{user.firstName + ' ' + user.lastName}}"/>
+    <img ng-show="!$ctrl.spSelect && $ctrl.user && !$ctrl.inviteAccepted" src="/assets/strategical-planning-assets/icons/user-invited.svg" class="md-avatar" alt=""/>
+
+    <img ng-show="$ctrl.spDeletable && !$ctrl.userMode" ng-click="$ctrl.remove($event)" ng-src="/assets/strategical-planning-assets/icons/delete-user-icon.svg" class="md-avatar remove" alt=""/>
+    <img ng-show="$ctrl.spSelectable && $ctrl.spSelect" ng-src="/assets/strategical-planning-assets/icons/selected-user.svg" class="md-avatar" alt=""/>
+      <div class="sp-owner-block" ng-if="!$ctrl.spSelect && $ctrl.spPosition.permission === 'OWNER'"><span>Owner</span></div>
+  </div>
+  <div class="sp-user-text">
+
+    <h3 ng-if="$ctrl.user && $ctrl.inviteAccepted"><span md-highlight-flags="i" md-highlight-text="$ctrl.spHighlightText">{{$ctrl.user.firstName + ' ' + $ctrl.user.lastName}}</span><span ng-show="$ctrl.user.removed"> was removed</span></h3>
+    <h3 ng-if="$ctrl.userMode && $ctrl.user && !$ctrl.inviteAccepted"><span md-highlight-flags="i" md-highlight-text="$ctrl.spHighlightText">{{$ctrl.user.email}}</span></h3>
+
+    <span ng-if="!$ctrl.spAssignedMode">
+      <p ng-if="!$ctrl.userMode" ng-style="{'max-width': $ctrl.spWithPermissions ? '140px' : '300px'}"><span md-highlight-flags="i" md-highlight-text="$ctrl.spHighlightText">{{$ctrl.spPosition.designation}}</span></p>
+      <p ng-if="$ctrl.userMode && $ctrl.inviteAccepted"><span md-highlight-flags="i" md-highlight-text="$ctrl.spHighlightText">{{$ctrl.user.email}}</span></p>
+      <p ng-if="$ctrl.userMode && $ctrl.user && !$ctrl.inviteAccepted">Pending</p>
+    </span>
+    <span ng-if="$ctrl.spAssignedMode">
+      <p ng-if="$ctrl.user.positions && $ctrl.user.positions.length > -1">
+        <span class="description-overflow warning-text" ng-if="$ctrl.user.unassigned" ng-class="{'small-max': !$ctrl.user.inviteAccepted && $ctrl.user.positions.length > ($ctrl.user.unassigned ? 0 : 1), 'middle-max': !$ctrl.user.inviteAccepted || $ctrl.user.positions.length > ($ctrl.user.unassigned ? 0 : 1)}">No position in this department</span>
+        <span class="description-overflow" ng-if="!$ctrl.user.unassigned" ng-class="{'small-max': !$ctrl.user.inviteAccepted && $ctrl.user.positions.length > ($ctrl.user.unassigned ? 0 : 1), 'middle-max': !$ctrl.user.inviteAccepted || $ctrl.user.positions.length > ($ctrl.user.unassigned ? 0 : 1)}">{{$ctrl.user.positions[0].designation}}</span>
+        <span class="description-overflow" ng-if="$ctrl.user.positions.length > ($ctrl.user.unassigned ? 0 : 1)">
+          |
+          <md-menu md-offset="0 30">
+            <span class="button-text" ng-click="$mdMenu.open()">{{$ctrl.user.positions.length - ($ctrl.user.unassigned ? 0 : 1)}} more</span>
+            <md-menu-content width="3">
+              <md-menu-item class="sp-user-menu-item" ng-repeat="position in $ctrl.user.positions.slice(($ctrl.user.unassigned ? 0 : 1))">
+                <md-button ng-click="$ctrl.selectPosition(position)">
+                  {{position.designation}}
+                  <span class="description">{{position.groupName}}</span>
+                </md-button>
+              </md-menu-item>
+            </md-menu-content>
+          </md-menu>
+        </span>
+        <span class="description-overflow" ng-if="!$ctrl.user.inviteAccepted">| Pending</span>
+      </p>
+    </span>
+  </div>
+
+  <md-select ng-if="$ctrl.spWithPermissions" ng-change="$ctrl.changedPermission($event) " ng-click="$ctrl.spSelectable && ($event.stopPropagation() && $ctrl.select())" name="permission" ng-model="$ctrl.spPosition.permission" class="md-no-underline pull-right" aria-label="Access rights">
+    <md-option value="OWNER">Owner</md-option>
+    <md-option value="EDIT">Can edit</md-option>
+    <md-option value="CHILD">Can edit subprocess</md-option>
+    <md-option value="VIEW">Can view</md-option>
+  </md-select>
+</div>

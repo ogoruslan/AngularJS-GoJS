@@ -1,0 +1,383 @@
+.sp-user {
+  position: relative;
+  padding: 0 24px;
+  flex: 1 1 auto;
+  display: flex !important;
+  justify-content: flex-start;
+  align-items: center;
+  min-height: 48px;
+  height: auto;
+
+  &::before {
+    content: '';
+    min-height: 48px;
+    visibility: hidden;
+    display: inline-block;
+    pointer-events: none;
+  }
+  .sp-icons-block{
+    width:32px;
+    max-width: 32px;
+    height: 32px;
+    max-height: 32px;
+    float: left;
+    margin-left:8px;
+    margin-right:8px;
+
+    .sp-owner-block{
+      width: 39px;
+      height: 18px;
+      max-width: 39px;
+      max-height: 18px;
+      display: block;
+      position: relative;
+      background-color:#00b64b;
+      border-radius: 2px;
+      float:left;
+      top: -22px;
+      left: -4px;
+
+      span{
+        color: rgba(255, 255, 255, 0.87);
+        font-size: 12px;
+        font-weight: bold;
+        position: relative;
+        left: 2px;
+        top: -2px;
+      }
+    }
+  }
+
+  .description-overflow {
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin: -6px 0;
+    max-width: 270px;
+    &.middle-max {
+      max-width: 200px;
+    }
+    &.small-max {
+      max-width: 140px;
+    }
+  }
+
+  * {
+    z-index: 2;
+    pointer-events: none;
+  }
+  .sp-user-draggable {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+    pointer-events: auto;
+
+    .sp-user-draggable-box {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      min-width: 196px;
+      max-width: 350px;
+      height: 44px;
+      //border: 2px solid #a8a4ae;
+      box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.5);
+      background: #f5f4f7;
+      border-radius: 24px;
+
+      .sp-user-draggable-avatar {
+        float: left;
+        .md-avatar {
+          margin: 6px 9px 0 5px;
+        }
+      }
+
+      .sp-user-draggable-name {
+        padding-right: 12px;
+        h3 {
+          font-size: 16px;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          max-width: 100%;
+          margin: 12px 0 0 0 !important;
+          font-weight: normal;
+          padding: 0 !important;
+        }
+      }
+    }
+
+  }
+
+  .sp-user-back {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    transition: background .4s cubic-bezier(.25, .8, .25, 1) !important;
+  }
+
+  &.sp-user-draggable .sp-user-back{
+    background: #fff;
+  }
+
+  &:not(.sp-user-selectable):hover .sp-user-back {
+    background: #f2f2f2;
+  }
+
+  &:focus, .button-text:focus {
+    outline: none
+  }
+
+  & > div.md-primary > md-icon:not(.md-avatar-icon),
+  & > div.md-secondary > md-icon:not(.md-avatar-icon),
+  & > md-icon:first-child:not(.md-avatar-icon),
+  > md-icon.md-secondary:not(.md-avatar-icon) {
+    width: 24px;
+    margin-top: 16px;
+    margin-bottom: 12px;
+    box-sizing: content-box;
+  }
+  & > div.md-primary > md-checkbox,
+  & > div.md-secondary > md-checkbox,
+  & > md-checkbox,
+  md-checkbox.md-secondary {
+    align-self: center;
+    .md-label {
+      display: none;
+    }
+  }
+
+  & .md-avatar, .md-avatar-icon {
+    margin-bottom: 8px;
+    border-radius: 50%;
+    box-sizing: content-box;
+    margin-top: 20px;
+    margin-right: 16px;
+  }
+  & .md-avatar {
+    flex: none;
+    width: 32px;
+    height: 32px;
+  }
+  & .md-avatar-icon {
+    padding: 8px;
+
+    svg {
+      width: 24px;
+      height: 24px;
+    }
+  }
+
+  & > md-checkbox {
+    width: 24px;
+    margin-top: 16px;
+  }
+
+  & > p {
+    flex: 1 1 auto;
+    margin: 0;
+  }
+
+  &.md-2-line,
+  &.md-3-line {
+    align-items: flex-start;
+    justify-content: center;
+
+    .sp-user-text {
+      flex: 1 1 auto;
+      margin: auto;
+
+      h3 {
+        font-size: 16px;
+        font-weight: 400;
+        letter-spacing: 0.010em;
+        margin: 0;
+        line-height: 1.2em;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        color: rgba(0, 0, 0, 0.87);
+        max-width: 300px;
+      }
+      h4 {
+        font-size: 14px;
+        letter-spacing: 0.010em;
+        margin: 3px 0 1px 0;
+        font-weight: 400;
+        line-height: 1.2em;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        max-width: 300px;
+      }
+      p {
+        font-size: 14px;
+        letter-spacing: 0.010em;
+        margin: 0;
+        line-height: 1.6em;
+        color: rgba(0, 0, 0, 0.54);
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        max-width: 300px;
+      }
+    }
+  }
+
+  &.md-2-line {
+    height: auto;
+
+    min-height: 72px;
+
+    &::before {
+      content: '';
+      min-height: 72px;
+      visibility: hidden;
+      display: inline-block;
+    }
+
+    > .md-avatar, .md-avatar-icon {
+      margin-top: 20px;
+    }
+
+    > md-icon:first-child {
+      align-self: flex-start;
+    }
+  }
+
+  &.md-3-line {
+    &, & > .md-no-style {
+      height: auto;
+
+      min-height: 88px;
+      &::before {
+        content: '';
+        min-height: 88px;
+        visibility: hidden;
+        display: inline-block;
+      }
+
+      > md-icon:first-child,
+      > .md-avatar {
+        margin-top: 16px;
+      }
+    }
+  }
+
+  .warning-text {
+    color: #ff1744;
+  }
+
+  .button-text {
+    font-size: 14px;
+    line-height: 1.43;
+    color: #3f51b5;
+    padding: 3px 3px 4px;
+    cursor: pointer;
+    pointer-events: auto;
+    &:hover, &[aria-expanded=true] {
+      background: rgba(0, 0, 0, 0.08);
+    }
+  }
+
+  &.sp-user-selectable {
+    cursor: pointer;
+  }
+
+  .remove {
+    display: none;
+  }
+
+  &.sp-user-deletable:hover {
+    .md-avatar,.sp-owner-icon {
+      display: none;
+    }
+    .remove {
+      display: block !important;
+      cursor: pointer;
+      pointer-events: auto;
+    }
+  }
+
+  md-select {
+    pointer-events: auto;
+    &:focus md-select-value{
+      color: rgba(0, 0, 0, 0.54) !important;
+    }
+    margin: 18px 0 0 0 !important;
+    font-size: 14px !important;
+    color: rgba(0, 0, 0, 0.54) !important;
+    line-height: 18px !important;
+    md-select-value {
+      padding: 3px 1px 2px !important;
+      > span {
+        padding-top: 1px;
+        opacity: 1 !important;
+      }
+    }
+    .md-select-icon {
+      color: rgba(0, 0, 0, 0.2) !important;
+      margin: 2px 0 0 0 !important;
+    }
+  }
+
+  .button-remove {
+    cursor: pointer;
+    padding: 5px;
+    position: absolute;
+    top: 18px;
+    right: 18px;
+    display: none;
+    outline: 0 !important;
+    pointer-events: auto;
+
+    md-icon {
+      opacity: 0.54;
+    }
+
+  }
+
+  &:hover .button-remove {
+    display: block;
+  }
+
+  &.restore {
+    background: #fafafa;
+    .button-remove {
+      display: block;
+    }
+    .md-avatar,
+    .sp-user-text p {
+      display: none;
+    }
+    .sp-user-text h3 {
+      color: rgba(0, 0, 0, 0.54) !important;
+      white-space: normal;
+    }
+  }
+
+}
+
+.sp-user-menu-item {
+  height: auto;
+  button {
+    pointer-events: auto;
+    line-height: 20px;
+    padding: 12px 24px;
+    .description {
+      display: block !important;
+      font-size: 14px;
+      color: rgba(0, 0, 0, 0.54);
+    }
+  }
+
+}
+
+md-sidenav sp-user .sp-user-text h3{
+  max-width: 140px!important;
+}

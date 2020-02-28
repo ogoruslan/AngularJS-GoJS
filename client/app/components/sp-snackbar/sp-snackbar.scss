@@ -1,0 +1,23 @@
+.sp-snackbar {
+  left: 30% !important;
+  width: 40% !important;
+
+  .md-toast-content {
+    max-width: 480px !important;
+    margin: 0 auto !important;
+  }
+
+  .md-toast-text {
+    padding: 20px 20px 20px 6px;
+  }
+
+  &.sp-snackbar-error {
+    .md-toast-text {
+      color: #ff98b5;
+    }
+  }
+}
+
+.sp-snackbar-button {
+  color: #a3c9f8 !important;
+}

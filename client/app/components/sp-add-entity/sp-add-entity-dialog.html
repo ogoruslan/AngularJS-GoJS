@@ -1,0 +1,16 @@
+<section class="sp-add-entity-dialog">
+  <div class="header-container">
+    <div class="designation">{{($ctrl.name.length > 44) ? $ctrl.name.slice(0,44) + "..." : $ctrl.name}} ({{$ctrl.type}})</div>
+    <div class="title">Add entities</div>
+  </div>
+  <div class="content-container">
+    <sp-select-widget
+            sp-item-type="entity"
+            sp-search-items="$ctrl.searchEntities"
+            on-selected-items="$ctrl.getSelectedEntities(items)"
+    ></sp-select-widget>
+  </div>
+  <div class="footer-container">
+    <md-button ng-disabled="$ctrl.newSelectedEntities.length <= 0" ng-click="$ctrl.submit()" class="md-raised button-submit">Connect with goal</md-button>
+  </div>
+</section>

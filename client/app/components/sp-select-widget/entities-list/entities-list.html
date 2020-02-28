@@ -1,0 +1,7 @@
+<section ng-repeat="item in $ctrl.entities" class="entities-list">
+  <section class="item-block">
+    <sp-entity sp-selectable="true" sp-select="$ctrl.selected[item.id]" on-select="$ctrl.selectEntity(selected, item)" sp-entity="item"></sp-entity>
+  </section>
+  <md-divider></md-divider>
+</section>
+

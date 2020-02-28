@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+    <g fill="none" fill-rule="evenodd">
+        <circle cx="16" cy="16" r="16" fill="#EBE8EF"/>
+        <path fill="#000" fill-rule="nonzero" d="M12.4 16.66h7.2V14.5h-7.2v2.16zM8.71 15.4a3.65 3.65 0 0 1 3.69-3.69h2.7V10h-2.7C9.43 10 7 12.43 7 15.4s2.43 5.4 5.4 5.4h2.7v-1.71h-2.7a3.65 3.65 0 0 1-3.69-3.69zM19.6 10h-2.7v1.71h2.7a3.65 3.65 0 0 1 3.69 3.69 3.65 3.65 0 0 1-3.69 3.69h-2.7v1.71h2.7c2.97 0 5.4-2.43 5.4-5.4S22.57 10 19.6 10z" opacity=".87"/>
+    </g>
+</svg>

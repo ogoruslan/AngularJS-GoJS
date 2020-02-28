@@ -1,0 +1,18 @@
+<section class="sp-notifications" ng-class="{expanded: $ctrl.expanded && $ctrl.spNotifications.length > 0}">
+  <div class="sp-panel" layout="row" layout-align="center center">
+    <span class="counter" ng-if="$ctrl.spNotifications.length > 0"><span>{{$ctrl.spNotifications.length}}</span></span>
+    <md-icon ng-click="$ctrl.toggle()" md-svg-icon="notifications"></md-icon>
+    <div class="title" ng-click="$ctrl.toggle()" flex>
+      <span>Updates (1h ago)</span>
+    </div>
+    <span ng-show="$ctrl.spNotifications.length > 0" ng-click="$ctrl.toggle()" class="expand-more" ng-class="{'expand-more': !$ctrl.expanded, 'expand-less': $ctrl.expanded}"></span>
+  </div>
+  <div class="list" ng-show="$ctrl.expanded && $ctrl.spNotifications.length > 0" ng-repeat="item in $ctrl.spNotifications | orderBy:'-'">
+    <img ng-src="{{item.icon || '/assets/strategical-planning-assets/icons/avatar.svg'}}" class="md-avatar" alt=""/>
+    <span class="line">
+      <span class="">{{item.user}}</span> <span class="notification">{{item.notification}}</span> <span class="">{{item.object}}</span>
+      <span class="date">{{item.date | date:"MMM dd ',' h:mma"}}</span>
+    </span>
+
+  </div>
+</section>

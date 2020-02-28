@@ -1,0 +1,98 @@
+.sp-notifications {
+  transition: background .4s cubic-bezier(.25, .8, .25, 1) !important;
+
+  * {
+    outline: none !important;
+  }
+
+  &.expanded {
+    background: rgba(#e8e8e8,0.2);
+  }
+  .list{
+    margin-left:24px;
+  }
+
+  .line{
+    vertical-align: top;
+    max-width: 300px;
+    width: 300px!important;
+    display: inline-block;
+    font-size: 16px;
+    color: rgba(0, 0, 0, 0.87);
+
+    .date{
+      color: rgba(0, 0, 0, 0.38);
+      font-size: 14px;
+      line-height: 1.43;
+      margin: 5px 0 15px 0;
+      display: block;
+    }
+    .notification{
+    color: rgba(0, 0, 0, 0.54);
+    }
+  }
+
+  .sp-panel {
+    padding: 20px 18px 20px 24px;
+    color: #939393;
+    md-icon,.sp-icon {
+      cursor: pointer;
+      width: 32px;
+      height: 32px;
+      max-width: 32px;
+      max-height: 32px;
+      margin-right: 8px;
+      margin-left: -16px;
+    }
+    .sp-icon {
+      display: block;
+      float: left;
+      margin: 0 8px;
+      border-radius: 50%;
+    }
+    .counter {
+      display: block;
+      position:relative;
+      z-index: 20;
+      border-radius: 50%;
+      border: 1px solid red;
+      background: red;
+      width:16px;
+      height:16px;
+      top:-16px;
+      left:18px;
+
+      span{
+        font-size: 11px;
+        color: white;
+        display: block;
+        margin: 1px 0 0 4px;
+      }
+    }
+    .title {
+      cursor: pointer;
+    }
+  }
+
+  .md-avatar {
+    margin-right: 8px !important;
+  }
+
+  .expand-more, .expand-less {
+    margin-left: 60px;
+    background-image: url(/assets/strategical-planning-assets/icons/expand-more.svg);
+    background-position: center center;
+    width: 24px;
+    height: 32px;
+    min-width: 24px;
+    min-height: 32px;
+    display: inline-block;
+    cursor: pointer;
+    margin-top: -1px;
+    opacity: 0.54;
+  }
+
+  .expand-less {
+    background-image: url(/assets/strategical-planning-assets/icons/expand-less.svg);
+  }
+}

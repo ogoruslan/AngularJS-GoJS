@@ -1,0 +1,46 @@
+sp-zoombar {
+
+}
+
+.sp-zoombar {
+  z-index: 50 !important;
+  min-width: 48px;
+  max-height: 48px;
+  border-radius: 2px;
+  background-color: rgba(0, 0, 0, 0.87);
+  margin: 20px 21px;
+  position: fixed;
+  bottom: 0;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.24);
+}
+
+.sp-zoombar ul {
+  margin: 0;
+  padding: 0;
+  float: left;
+}
+
+.sp-zoombar li{
+  float: left;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  min-width: 48px;
+  height: 48px;
+}
+
+.sp-zoombar .buttons-group {
+  margin-left: 5px;
+}
+
+.sp-zoombar .md-button {
+  height: 48px;
+  width: 48px;
+  margin: 0;
+  padding-top: 12px;
+  border-radius: 0;
+}
+
+.sp-zoombar .sp-active, .sp-zoombar .md-button:hover {
+  background-color: rgba(#ffffff, 0.1) !important;
+}

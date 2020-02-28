@@ -1,0 +1,65 @@
+<div layout="row" id="authentication" layout-align="center center" flex ng-cloak>
+
+    <!-- Sign in state starts-->
+    <div ng-if="displayBlock === 'login'" id="loginBlock" ng-class="errorMessage == '' ? 'loginBlockHeight':  'loginBlockHeightWithErrors'">
+        <md-whiteframe class="md-whiteframe-10dp" layout="column">
+
+            <form name="formLogin" ng-submit="login(formLogin)" flex novalidate>
+                <md-list>
+
+                    <!-- Capture Manager Logo -->
+                    <md-list-item layout="column" layout-align="center center" class="captureMgrLogoContainer" flex>
+                        <md-icon md-svg-icon="captureMgrLogo" id="captureMgrLogo"></md-icon>
+                    </md-list-item>
+
+                    <md-list-item layout="column" layout-align="center center" class="text-danger loginErrorMessage" ng-if="errorMessage != ''" flex>
+                        {{errorMessage}}
+                    </md-list-item>
+
+                    <!-- Email -->
+                    <md-list-item layout="column" layout-align="center center" ng-class="errorMessage == '' ? 'emailContainerLi':  'errorEmailContainerLi'">
+                        <md-input-container>
+                            <label>Email</label>
+                            <input name="txtEmail" ng-model="signIn.Email" id="txtEmail" type="email" required ng-model-options="{ updateOn: 'blur' }" />
+                            <div ng-messages="formLogin.txtEmail.$error">
+                                <div ng-message="required">Email is required <i class="material-icons loginErrorIcon">warning</i></div>
+                                <div ng-message="emrowail" style="opacity:1;margin-top:0px;">This is not a valid email address <i class="material-icons loginErrorIcon">warning</i></div>
+                            </div>
+                        </md-input-container>
+                    </md-list-item>
+
+                    <!-- Password -->
+                    <md-list-item layout="column" layout-align="center center" ng-class="errorMessage == '' ? 'passwordContainerLi':  'errorPasswordContainerLi'">
+                        <md-input-container>
+                            <label>Password</label>
+                            <input name="txtPassword" ng-model="signIn.Password" maxlength="48" id="txtPassword" type="password" required ng-model-options="{ updateOn: 'blur' }" />
+                            <div ng-messages="formLogin.txtPassword.$error" role="alert" class="errorMessage">
+                                <div ng-message="required">Password is required <i class="material-icons loginErrorIcon">warning</i></div>
+                            </div>
+                        </md-input-container>
+                    </md-list-item>
+
+                    <!-- Remember me -->
+                    <!--<div layout layout-align="center center" ng-class="errorMessage == '' ? 'rememberMeDiv':  'errorRememberMeDiv'">-->
+                        <!--<label>Keep me signed in </label>-->
+                        <!--<span flex></span>-->
+                        <!--<md-switch ng-model="signIn.KeepSignedIn" aria-label="Remember me" md-no-ink />-->
+                    <!--</div>-->
+
+                    <!--Sign in button-->
+                    <md-list-item layout="column" layout-align="center center" class="submitContainerLi">
+                        <md-button class="md-raised submitBtn" type="submit" id="btnSubmit">SIGN IN</md-button>
+                    </md-list-item>
+
+                    <!--Register link-->
+                    <!--<div layout layout-align="center center" id="noAccountSignUpDiv" flex class="textBtn">-->
+                        <!--No account? <span class="textBtn" ng-click="Navigate('Register')">Sign up</span>-->
+                    <!--</div>-->
+                </md-list>
+
+            </form>
+
+        </md-whiteframe>
+    </div>
+
+</div>

@@ -1,0 +1,40 @@
+<md-content class="sp-zoombar">
+    <ul>
+        <li>
+            <ul>
+                <li>
+                    <md-button title="Zoom Out" class="md-icon-button" aria-label="Zoom Out" ng-click="$ctrl.zoomOut()">
+                        <md-icon md-svg-icon="zoom-out"></md-icon>
+                    </md-button>
+                </li>
+
+                <li>
+                    <md-button title="Zoom In" class="md-icon-button" aria-label="Zoom In" ng-click="$ctrl.zoomIn()">
+                        <md-icon md-svg-icon="zoom-in"></md-icon>
+                    </md-button>
+                </li>
+
+                <li>
+                    <md-button title="Zoom Reset and Center" class="md-icon-button" aria-label="Center Adjust" ng-click="$ctrl.scrollToCenter()">
+                        <md-icon md-svg-icon="zoom-default"></md-icon>
+                    </md-button>
+                </li>
+            </ul>
+        </li>
+
+        <li class="buttons-group">
+            <ul>
+                <li>
+                    <md-button title="Panning Mode (Use Ctrl or Command key to activate)" ng-class="{'sp-active': $ctrl.mode === 'pan'}" class="md-icon-button" aria-label="Pan Mode" ng-click="$ctrl.panMode()">
+                        <md-icon md-svg-icon="zoom-hand"></md-icon>
+                    </md-button>
+                </li>
+                <li>
+                    <md-button title="Standard Mode" ng-class="{'sp-active': $ctrl.mode === 'pointer'}" class="md-icon-button" aria-label="Pointer Mode" ng-click="$ctrl.pointerMode()">
+                        <md-icon md-svg-icon="zoom-pointer"></md-icon>
+                    </md-button>
+                </li>
+            </ul>
+        </li>
+    </ul>
+</md-content>

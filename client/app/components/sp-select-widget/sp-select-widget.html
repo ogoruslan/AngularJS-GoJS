@@ -1,0 +1,39 @@
+<section class="sp-select-widget" flex layout="column">
+  <div class="search-container" flex>
+    <md-input-container md-no-float class="md-block">
+      <md-icon md-svg-icon="assign-search"></md-icon>
+      <input ng-model="$ctrl.searchString" ng-change="$ctrl.searchStringChange()" type="text" placeholder="{{$ctrl.placeholder}}">
+    </md-input-container>
+  </div>
+  <div class="results-container" flex>
+    <span ng-if="$ctrl.loading" class="loading">
+      <md-progress-circular class="md-primary" md-diameter="40"></md-progress-circular>
+    </span>
+    <positions-list ng-show="!$ctrl.notFound" ng-if="!$ctrl.loading && $ctrl.mode.position"
+            sp-positions="$ctrl.items"
+            sp-root-id="''"
+            sp-search-string="$ctrl.searchString"
+            sp-selected-items="$ctrl.selectedItemsTransfer"
+            on-selected-positions="$ctrl.getSelectedPositions(positions)"
+            on-positions="$ctrl.getPositions(positions)"
+    ></positions-list>
+    <span ng-show="!$ctrl.loading && $ctrl.notFound && $ctrl.mode.position" class="not-found">
+        No users were found. If you want to invite new person, enter his email:
+      {{$ctrl.spSearchUsers}}
+      <invite-position ng-if="!$ctrl.loading"
+                sp-positions="$ctrl.items"
+                on-position-created="$ctrl.positionCreated(position)"
+                sp-search-users="$ctrl.spSearchUsers"
+        ></invite-position>
+    </span>
+    <entities-list ng-show="!$ctrl.notFound" ng-if="!$ctrl.loading && $ctrl.mode.entity"
+                    on-selected-entities="$ctrl.getSelectedEntities(entities)"
+                    on-entities="$ctrl.getEntities(entitiesLength)"
+                    sp-entities="$ctrl.items"
+                    sp-search-string="$ctrl.searchString"
+    ></entities-list>
+    <span ng-if="!$ctrl.loading && $ctrl.notFound && $ctrl.mode.entity" class="not-found">
+        No entities were found.
+    </span>
+  </div>
+</section>

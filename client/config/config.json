@@ -1,0 +1,10 @@
+{
+  "API_HOST": "http://localhost:9443/",
+  "API_URL_AUTH": "authentication/token",
+  "API_URL_GOAL": "strategicalplanning",
+  "API_URL_ORGCHART": "orgchart",
+  "API_URL_PROJECT_MANAGER": "projectmanager",
+  "API_E6_HOST": "http://localhost:9443/",
+  "BP_EDITOR_URL": "http://localhost:9443/",
+  "PROJECT_MANAGER_URL": "http://localhost:9443/"
+}

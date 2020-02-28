@@ -1,0 +1,15 @@
+<span ng-click="$ctrl.spSelectable && $ctrl.toggle() || $ctrl.spLinkable && $ctrl.goTo()">
+  <md-list-item class="sp-entity md-2-line" ng-class="{'sp-entity-selectable': $ctrl.spSelectable, 'sp-entity-linkable': $ctrl.spLinkable, 'sp-entity-deletable': $ctrl.spDeletable}">
+    <img ng-if="$ctrl.spEntity.entityType" ng-show="!$ctrl.spSelect" ng-src="{{$ctrl.spEntity.entityType === 'Project' && '/assets/strategical-planning-assets/icons/project.svg' || $ctrl.spEntity.entityType === 'BPM' && '/assets/strategical-planning-assets/icons/BPM.svg'}}" class="md-avatar" alt=""/>
+    <img ng-if="$ctrl.project" ng-show="!$ctrl.spSelect" ng-src="/assets/strategical-planning-assets/icons/project.svg" class="md-avatar" alt=""/>
+    <img ng-if="$ctrl.bpm" ng-show="!$ctrl.spSelect" ng-src="/assets/strategical-planning-assets/icons/BPM.svg" class="md-avatar" alt=""/>
+    <img ng-if="$ctrl.goal" ng-show="!$ctrl.spSelect" ng-src="/assets/strategical-planning-assets/icons/goal.svg" class="md-avatar" alt=""/>
+
+    <img ng-show="$ctrl.spDeletable" ng-click="$ctrl.remove($event)" ng-src="/assets/strategical-planning-assets/icons/delete-user-icon.svg" class="md-avatar remove" alt=""/>
+    <img ng-show="$ctrl.spSelectable && $ctrl.spSelect" ng-src="/assets/strategical-planning-assets/icons/selected-user.svg" class="md-avatar" alt=""/>
+    <div class="md-list-item-text">
+      <h3>{{$ctrl.name || $ctrl.spEntity.entityName}}</h3>
+      <p>{{$ctrl.type || $ctrl.spEntity.entityType}}</p>
+    </div>
+  </md-list-item>
+</span>

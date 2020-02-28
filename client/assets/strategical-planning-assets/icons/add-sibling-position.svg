@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="20px" height="13px" viewBox="0 0 20 13" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 44 (41411) - http://www.bohemiancoding.com/sketch -->
+    <title>add subposition</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Ogrchart" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Orgchart_icons" transform="translate(-103.000000, -147.000000)">
+            <g id="add-subposition" transform="translate(103.000000, 147.000000)">
+                <path d="M5.17491961,2.10360706 C6.1830026,0.822688349 7.74835757,0 9.50629234,0 L14.4937077,0 C17.5347489,0 20,2.46861471 20,5.5 C20,6.78523572 19.5587145,7.9675083 18.8191947,8.90385841 C18.9371717,8.45570687 19,7.9851903 19,7.5 C19,4.46861471 16.5361474,2 13.4968313,2 L6.24381829,2 C5.87806055,2 5.52066766,2.03563067 5.17491961,2.10360706 Z" id="Combined-Shape" fill="#FFFFFF"></path>
+                <rect id="create-event-copy-3" stroke="#FFFFFF" stroke-width="2" x="1" y="5" width="15" height="7" rx="3.5"></rect>
+            </g>
+        </g>
+    </g>
+</svg>

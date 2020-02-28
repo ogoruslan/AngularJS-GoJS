@@ -1,0 +1,76 @@
+<div class="bp-comments-container no-animate" ng-class="{'bp-open-collapsible' : $ctrl.commentsExpended}">
+  <div ng-cloak class="bp-comments-button">
+    <button ng-hide="$ctrl.addingComment" type="button"
+            ng-click="$ctrl.commentsExpended || !$ctrl.bpComments.length ? $ctrl.startAdding($event) : $ctrl.toggleComments($event);">
+
+      <md-icon ng-if="!$ctrl.editingComment || $ctrl.commentsExpended" class="bp-comments-icon" md-svg-icon="bp-comments"></md-icon>
+      <md-icon ng-if="$ctrl.editingComment && !$ctrl.commentsExpended" class="bp-attention-icon" md-svg-icon="bp-attention"></md-icon>
+
+      <span class="bp-has-data-color" ng-if="!$ctrl.commentsExpended && $ctrl.bpComments.length" >
+        {{ 'Comments (' + $ctrl.bpComments.length + ')' }}
+      </span>
+
+      <span class="bp-no-data-color" ng-if="$ctrl.commentsExpended || !$ctrl.bpComments.length"
+            ng-click="$ctrl.startAdding();">Add comment
+      </span>
+
+    </button>
+
+    <md-icon ng-if="$ctrl.bpComments.length" class="md-icon-25" md-svg-icon="bp-expand-less"
+             ng-click="$ctrl.toggleComments($event);"
+    ></md-icon>
+
+    <div ng-if="$ctrl.addingComment">
+      <!-- ADD COMMENT FORM -->
+      <form ng-cloak name="commentForm" novalidate>
+        <md-input-container>
+
+          <label for="addComment">Add comment</label>
+          <textarea name="comment" id="addComment" ng-model="$ctrl.comment.text" md-maxlength=500 maxlength="500" aria-label="Add comment"></textarea>
+
+          <div ng-messages>
+            <div ng-if="$ctrl.comment.text.length === 500">Character limit exceeded</div>
+          </div>
+
+          <md-button ng-disabled="!$ctrl.comment.text || $ctrl.Utils.hasWhiteSpaceOnly($ctrl.comment.text)"
+                     class="bp-add-comment" ng-click="$ctrl.addComment()">Add
+          </md-button>
+          <md-button class="bp-add-comment" ng-click="$ctrl.cancelAdd()">Cancel
+          </md-button>
+
+        </md-input-container>
+      </form>
+    </div>
+  </div>
+
+  <md-divider ng-if="$ctrl.commentsExpended && $ctrl.bpComments.length"></md-divider>
+
+  <div class="bp-exp-container" bp-get-element-height bp-watch-elem-height>
+    <div class="bp-expandable-content">
+
+      <!-- LIST OF COMMENTS -->
+      <md-list>
+        <bp-comment ng-repeat="comment in $ctrl.bpComments track by $index"
+                    bp-text="comment.text"
+                    bp-id="comment.id"
+                    bp-date-created="comment.dtCreated"
+                    bp-date-updated="comment.dtUpdated"
+                    bp-created-by-firstname="comment.createdBy.firstName"
+                    bp-created-by-lastname="comment.createdBy.lastName"
+                    bp-created-by-position="comment.createdBy.position"
+                    bp-created-by-picture="comment.createdBy.picture"
+                    bp-show-actions="comment.showActions"
+                    bp-is-last="$last"
+                    bp-is-deleted="comment.isDeleted || false"
+                    bp-on-delete="$ctrl.deleteComment(index, id);"
+                    bp-on-edit-commit="$ctrl.editCommit(text);"
+                    bp-on-edit-start="$ctrl.editStart(isEditing);"
+                    bp-on-edit-end="$ctrl.editEnd(isEditing);"
+                    bp-on-restore="$ctrl.restoreComment(index, id);"
+                    ng-mouseover="$ctrl.hoverIn($index);"
+                    ng-mouseleave="$ctrl.hoverOut();"
+        ></bp-comment>
+      </md-list>
+    </div>
+  </div>
+</div>

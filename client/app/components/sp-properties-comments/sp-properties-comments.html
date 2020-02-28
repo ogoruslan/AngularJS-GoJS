@@ -1,0 +1,75 @@
+<div class="sp-comments-container no-animate" ng-class="{'sp-open-collapsible' : $ctrl.commentsExpended}">
+  <div ng-cloak class="sp-comments-button">
+    <button ng-hide="$ctrl.addingComment && $ctrl.commentsExpended" type="button"
+            ng-click="$ctrl.commentsExpended || !$ctrl.spComments.length ? $ctrl.startAdding($event) : $ctrl.toggleComments($event);">
+
+      <md-icon ng-if="(!$ctrl.editingComment && !$ctrl.addingComment) || $ctrl.commentsExpended" class="sp-comments-icon" md-svg-icon="comment"></md-icon>
+      <md-icon ng-if="($ctrl.editingComment || $ctrl.addingComment) && !$ctrl.commentsExpended" class="sp-attention-icon" md-svg-icon="sp-attention"></md-icon>
+
+      <span class="sp-has-data-color" ng-if="!$ctrl.commentsExpended && $ctrl.spComments.length" >
+        {{ 'Comments (' + $ctrl.spComments.length + ')' }}
+      </span>
+
+      <span class="sp-no-data-color" ng-if="$ctrl.commentsExpended || !$ctrl.spComments.length"
+            ng-click="$ctrl.startAdding();">Add comment
+      </span>
+
+    </button>
+
+    <md-icon ng-if="$ctrl.spComments.length" class="md-icon-25" md-svg-icon="expand-less"
+             ng-click="$ctrl.toggleComments($event);"
+    ></md-icon>
+
+    <div ng-if="$ctrl.commentsExpended && $ctrl.addingComment" class="commentForm">
+      <!-- ADD COMMENT FORM -->
+      <form ng-cloak name="commentForm" novalidate>
+        <md-input-container>
+
+          <label for="addComment">Add comment</label>
+          <textarea name="comment" id="addComment" ng-model="$ctrl.comment.text" md-maxlength=500 maxlength="500" aria-label="Add comment"></textarea>
+
+          <div ng-messages>
+            <div ng-if="$ctrl.comment.text.length === 500">Character limit exceeded</div>
+          </div>
+
+          <md-button ng-disabled="!$ctrl.comment.text || !$ctrl.comment.text.trim()"
+                     class="sp-add-comment" ng-click="$ctrl.addComment()">Add
+          </md-button>
+          <md-button class="sp-add-comment" ng-click="$ctrl.cancelAdd()">Cancel
+          </md-button>
+
+        </md-input-container>
+      </form>
+    </div>
+  </div>
+  <md-divider ng-if="$ctrl.commentsExpended && $ctrl.spComments.length"></md-divider>
+
+  <div class="sp-exp-container" ng-class="{'sp-scroolHeight' : $ctrl.scrollHeight}">
+    <div class="sp-expandable-content">
+
+      <!-- LIST OF COMMENTS -->
+      <md-list>
+        <sp-comment ng-repeat="comment in $ctrl.spComments track by $index"
+                    sp-text="comment.text"
+                    sp-id="comment.id"
+                    sp-date-created="comment.dtCreated"
+                    sp-date-updated="comment.dtUpdated"
+                    sp-created-by-firstname="comment.createdBy.firstName"
+                    sp-created-by-lastname="comment.createdBy.lastName"
+                    sp-created-by-position="comment.createdBy.position"
+                    sp-created-by-avatar="comment.createdBy.avatarFileId"
+                    sp-show-actions="comment.showActions"
+                    sp-is-last="$last"
+                    sp-is-deleted="comment.isDeleted || false"
+                    sp-on-delete="$ctrl.deleteComment(index, id);"
+                    sp-on-edit-commit="$ctrl.editCommit(text);"
+                    sp-on-edit-start="$ctrl.editStart(isEditing);"
+                    sp-on-edit-end="$ctrl.editEnd(isEditing);"
+                    sp-on-restore="$ctrl.restoreComment(index, id);"
+                    ng-mouseover="$ctrl.hoverIn($index);"
+                    ng-mouseleave="$ctrl.hoverOut();"
+        ></sp-comment>
+      </md-list>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,19 @@
+<section class="sp-assign-user-dialog">
+  <div class="header-container">
+    <div class="designation">{{($ctrl.name.length > 44) ? $ctrl.name.slice(0,44) + "..." : $ctrl.name}} ({{$ctrl.type}})</div>
+    <div class="title">Add users</div>
+  </div>
+  <div class="content-container">
+    <sp-select-widget
+            sp-item-type="position"
+            sp-search-items="$ctrl.searchPositions"
+            sp-add-position="$ctrl.spAddPosition"
+            sp-invite-user="$ctrl.spInviteUser"
+            on-selected-items="$ctrl.getSelectedPositions(items)"
+            sp-search-users="$ctrl.spSearchUsers"
+    ></sp-select-widget>
+  </div>
+  <div class="footer-container">
+    <md-button ng-disabled="$ctrl.newSelectedPositions.length <= 0" ng-click="$ctrl.submit()" class="md-raised button-submit">Add users</md-button>
+  </div>
+</section>

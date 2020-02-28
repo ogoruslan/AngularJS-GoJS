@@ -1,0 +1,101 @@
+cm-strategical-planning {
+  display: block;
+  position: relative;
+  min-height: 300px;
+  height: 100%;
+  width: 100%;
+
+  .entityTextarea{
+    padding-right: 20px;
+  }
+  canvas {
+    outline: 0;
+  }
+  .diagram-container {
+    position: inherit !important;
+    overflow: hidden;
+  }
+  .sidenav-header-text{
+    border:none!important;
+    margin-top: -2px!important;
+    font-weight: 500 !important;
+    line-height: 1.4 !important;
+    color: rgba(0, 0, 0, 0.87) !important;
+    font-size: 20px;
+  }
+  .input-container-header-text{
+    padding-bottom: 0px!important;
+  }
+  .info{
+    padding: 4px 0 16px 27px;
+    color: rgba(0, 0, 0, 0.54);
+    font-size: 14px;
+    line-height: 1.43;
+    text-align: left;
+
+    .separator{
+      padding: 0 8px 0 8px;
+    }
+  }
+
+  .statistic {
+    position: absolute;
+    top: 23px;
+    right: 24px;
+    cursor: pointer;
+
+    .item {
+      font-size: 14px;
+      line-height: 1.43;
+      padding-left: 12px;
+    }
+
+    md-icon {
+      width: 16px;
+      height: 16px;
+      min-width: 16px;
+      min-height: 16px;
+      margin: 0px 0px 0 0;
+    }
+  }
+  .privateIcon {
+    display: inline-block;
+    vertical-align: top;
+    margin-top: 2px;
+
+    md-icon {
+      width: 16px;
+      height: 16px;
+      min-width: 16px;
+      min-height: 16px;
+      margin: 0px 0px 0 0;
+    }
+  }
+  .textInfo{
+    margin-top:25px;
+  }
+  .button-request{
+    margin-top:16px;
+    margin-bottom:15px;
+    margin-left:-5px;
+  }
+  .private{
+    md-input-container  .md-resize-wrapper{
+      display: inline-block;
+    }
+    .info{
+      padding: 0px 0 18px 27px;
+      margin-top: -2px;
+      color: rgba(0, 0, 0, 0.54);
+      font-size: 14px;
+      line-height: 1.43;
+      text-align: left;
+
+      .separator{
+        padding: 0 8px 0 8px;
+      }
+    }
+  }
+}
+
+

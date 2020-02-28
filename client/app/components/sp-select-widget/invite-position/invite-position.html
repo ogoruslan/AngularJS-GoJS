@@ -1,0 +1,42 @@
+<form name="invitePositionForm">
+  <section class="invite-position" layout="row">
+    <md-input-container flex>
+      <label>Email</label>
+      <input required ng-model="$ctrl.userEmail" name="positionEmail" ng-change="$ctrl.checkEmail(invitePositionForm.positionEmail)" id="positionEmail" type="email" aria-label="User email" maxlength=="255">
+      <div ng-messages="invitePositionForm.positionEmail.$error" role="alert">
+        <div ng-message="email">Invalid email address</div>
+        <div ng-message="equal">This Email address is used.</div>
+      </div>
+    </md-input-container>
+    <md-autocomplete flex required
+                     md-input-name="positionName"
+                     md-no-cache="true"
+                     md-selected-item="$ctrl.selectedItem"
+                     md-search-text="$ctrl.searchText"
+                     md-items="item in $ctrl.querySearch($ctrl.searchText)"
+                     md-item-text="item.name"
+                     md-floating-label="Position name"
+                     md-menu-class="sp-autocomplete-invite-position-list"
+                     maxlength=="150"
+                     md-input-maxlength="150"
+    >
+      <md-item-template>
+        <div class="position-item">
+          <p class="position-name"><span md-highlight-text="$ctrl.searchText">{{item.name}}</span></p>
+          <p><span md-highlight-text="$ctrl.searchText">{{item.department}}</span></p>
+        </div>
+      </md-item-template>
+      <div ng-messages="invitePositionForm.positionName.$error">
+        <div ng-message="required">Position name is required</div>
+        <div ng-message="maxlength">Your entry is too long. Maximum is 150 symbols.</div>
+      </div>
+    </md-autocomplete>
+    <md-select name="permission" ng-model="$ctrl.spPosition.permission" class="md-no-underline pull-right" aria-label="Permission">
+      <md-option value="OWNER">Owner</md-option>
+      <md-option value="EDIT">Can edit</md-option>
+      <md-option value="CHILD">Can edit subprocess</md-option>
+      <md-option value="VIEW" selected="">Can view</md-option>
+    </md-select>
+    <md-button ng-click="$ctrl.invitePosition()" ng-disabled="invitePositionForm.$invalid" class="button-invite md-primary">INVITE</md-button>
+  </section>
+</form>

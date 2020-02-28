@@ -1,0 +1,61 @@
+sp-date{
+
+}
+
+sp-date .md-button{
+  height:30px!important;
+  min-height: 30px!important;
+  line-height: 30px!important;
+  padding: 0 0 0 0!important;
+  margin: 0 0 0 0!important;
+  width: 30px!important;
+  min-width: 30px!important;
+}
+
+sp-date input{
+  padding-bottom: 2px!important;
+}
+
+sp-date .md-datepicker-input{
+  font-size: 16px;
+  width: 150px!important;
+}
+
+/* start color*/
+sp-date .md-datepicker-input,
+sp-date input::placeholder,
+sp-date input::-webkit-input-placeholder,
+sp-date input::-moz-placeholder,
+sp-date input:-moz-placeholder,
+sp-date input:-ms-input-placeholder{
+  color: #9c9c9c!important;
+}
+
+/*green color*/
+sp-date .data_green .md-datepicker-input{
+  color: #629c34!important;
+}
+
+sp-date .data_red .md-datepicker-input{
+  color: red!important;
+}
+
+sp-date .data_yellow .md-datepicker-input{
+  color: #ffbc1a!important;
+}
+
+sp-date .md-input-has-value label, sp-date .md-input-focused label{
+  display:none!important;
+}
+
+sp-date .md-datepicker-input {
+  border: none!important;
+}
+
+sp-date md-input-container{
+  margin-left:24px!important;
+  transition:none!important;
+  padding: 1px!important;
+  margin-top:7px!important;
+  margin-bottom:20px!important;
+}

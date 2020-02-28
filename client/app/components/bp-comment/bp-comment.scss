@@ -1,0 +1,90 @@
+$bp-icon-color: #6C6C6C;
+
+bp-comment {
+  .bp-comment-actions,
+  .bp-date-created {
+    cursor: pointer;
+    position: absolute;
+    right: 24px;
+
+    md-icon {
+      color: $bp-icon-color;
+    }
+
+    :hover {
+      color: #000;
+    }
+
+    :focus {
+      outline: none;
+    }
+  }
+
+  .bp-removed-comment {
+    background-color: #EDEDED;
+    height: 72px;
+
+    h4 {
+      margin-left: 15px !important;
+      display: inline-flex;
+    }
+
+    span {
+      display: inline-block;
+      white-space: nowrap;
+      max-width: 150px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    md-icon {
+      position: absolute;
+      top: 32px;
+      right: 24px;
+      cursor: pointer;
+
+      svg {
+        color: $bp-icon-color;
+      }
+    }
+  }
+
+  .bp-edit-comment {
+    background-color: #EDEDED;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+    border-top: 1px solid rgba(0, 0, 0, 0.12);
+
+    form {
+      md-input-container {
+        margin: 35px 0 0;
+        padding: 0;
+
+        label {
+          padding-bottom: 5px;
+        }
+      }
+    }
+  }
+
+  md-list-item {
+    .md-list-item-text {
+      .bp-text {
+        color: #000000 !important;
+      }
+    }
+  }
+
+  md-list-item.md-3-line.md-no-proxy.bp-list-item-hover {
+    &:hover {
+      background-color: rgba(158, 158, 158, 0.2);
+    }
+  }
+}
+
+bp-properties md-content md-list md-list-item.bp-comments-padding {
+  padding-bottom: 15px;
+}
+
+md-list bp-comment md-list-item.md-3-line .md-list-item-text h4 {
+  color: rgba(0,0,0,0.54);
+}

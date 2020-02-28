@@ -1,0 +1,236 @@
+<div flex layout="row" id="goalPlanning" ng-keydown="keydown($event)">
+    <md-content flex class="diagram-container">
+        <sp-goalplanning
+                on-right-sidebar-init="RightSidebarInit(rightSidebarToggle)"
+                on-selected-node-data="selectionChanged(selectedNodeData)"
+                on-goaldiagram-init="GoaldiagramInit(goaldiagram)"
+                sp-nodes="nodes"
+                sp-selected="selectedGoalId"
+                sp-avoiding-right-sidebar-width="420"
+                sp-entity-added="AddEntity"
+                sp-entity-removed="RemoveEntity"
+                sp-entity-positions-added="AddEntityPositions"
+                sp-entity-positions-removed="RemoveEntityPositions"
+                md-auto-focus
+        >
+        </sp-goalplanning>
+        <sp-zoombar sp-diagram="goaldiagram"></sp-zoombar>
+    </md-content>
+    <sp-right-sidebar sp-visible="rightSidebarToggle" ng-click="rightSidebarClick()">
+        <div ng-show="isChild(selectedNodeData)">
+            <form name="goalForm" id="goalForm">
+                <md-content>
+                    <md-list-item>
+                        <md-input-container flex md-no-float class="input-container-header-text">
+                        <textarea class="sidenav-header-text" style="" aria-label="Goal"
+                                  ng-change="changed('text',selectedNodeData.text)"
+                                  ng-model="selectedNodeData.text"
+                                  ng-focus="textFocus(selectedNodeData, $event)"
+                                  ng-blur="textBlur(selectedNodeData, $event)"
+                                  rows="2" maxlength="255" tabIndex="1"></textarea>
+                        </md-input-container>
+                    </md-list-item>
+                    <sp-date md-no-float sp-data="selectedNodeData" on-date-changed="changed('Date')" tabIndex="2"></sp-date>
+                    <md-divider></md-divider>
+                    <sp-assign-user
+                            sp-name="selectedNodeData.text"
+                            sp-type="'Strategic Goal'"
+                            sp-positions="selectedNodeData.positions"
+                            sp-add-position="addPositionAPI"
+                            sp-invite-user="inviteUserAPI"
+                            sp-search-positions="searchPositions"
+                            sp-search-users="searchUsers"
+                            on-position-added="addPosition(positionId)"
+                            on-positions-added="addPositions(positions)"
+                            on-position-removed="removePosition(positionId)"
+                            on-permission-changed="onPermissionChanged(position)"
+                            sp-permission="permission"
+                            tabIndex="3"
+                    ></sp-assign-user>
+                    <md-divider></md-divider>
+                    <sp-add-entity
+                            sp-name="selectedNodeData.text"
+                            sp-type="'Strategic Goal'"
+                            sp-entities="selectedNodeData.entities"
+                            sp-search-entities="searchEntities"
+                            on-entity-added="addEntity(entity)"
+                            on-entity-removed="removeEntity(entity)"
+                            tabIndex="4"
+                    ></sp-add-entity>
+                    <md-divider></md-divider>
+                    <md-list-item>
+                        <md-input-container flex>
+                            <label>Success Criteria</label>
+                            <textarea ng-blur="trimAfterBlur('successCriteria',selectedNodeData.successCriteria)" tabIndex="5" ng-model="selectedNodeData.successCriteria" maxlength="300"  md-maxlength="300"  name="goalSuccessCriteria" ng-change="changed('successCriteria',selectedNodeData.successCriteria)" id="goalSuccessCriteria" aria-label="Goal Success Criteria" rows="1"></textarea>
+                            <div ng-messages="goalForm.goalFailureCriteria.$error" role="alert" multiple>
+                                <div ng-message="md-maxlength">There is not more than 300 characters</div>
+                            </div>
+                        </md-input-container>
+                    </md-list-item>
+                    <md-divider></md-divider>
+                    <md-list-item>
+                        <md-input-container flex>
+                            <label>Failure Criteria</label>
+                            <textarea ng-blur="trimAfterBlur('failureCriteria',selectedNodeData.failureCriteria)" tabIndex="6" ng-model="selectedNodeData.failureCriteria" ng-change="changed('failureCriteria',selectedNodeData.failureCriteria)" maxlength="300" md-maxlength="300"   name="goalFailureCriteria" id="goalFailureCriteria" aria-label="Goal Failure Criteria" rows="1"></textarea>
+                            <div ng-messages="goalForm.goalFailureCriteria.$error" role="alert" multiple>
+                                <div ng-message="md-maxlength">There is not more than 300 characters</div>
+                            </div>
+                        </md-input-container>
+                    </md-list-item>
+                    <md-divider></md-divider>
+                    <md-list-item>
+                        <md-input-container onclick="document.getElementById('sp-goal-tags').focus()" class="sp-with-chips" flex ng-class="{'sp-input-has-value':selectedNodeData.tags.length > 0, 'sp-input-no-value':selectedNodeData.tags.length <= 0}">
+                            <label>Tags</label>
+                            <md-chips
+                                    ng-model="selectedNodeData.tags"
+                                    name="tags"
+                                    md-require-match="false"
+                                    md-autocomplete-snap
+                                    md-on-add="changed('Tags')"
+                                    md-on-remove="changed('Tags')"
+                            >
+                                <md-autocomplete
+                                        md-item-text="item"
+                                        md-min-length="0"
+                                        md-selected-item="selectedTags"
+                                        md-search-text="$ctrl.searchText"
+                                        md-items="item in searchTags($ctrl.searchText)"
+                                        md-no-cache="true"
+                                        md-menu-class="sp-menu-tags"
+                                        md-input-id="sp-goal-tags"
+                                        tabIndex="7"
+                                        md-search-text-change="strLimit($ctrl.searchText,25)"
+                                >
+                                    <md-item-template>{{item}}</md-item-template>
+                                </md-autocomplete>
+                                <md-chip-template><span>{{$chip}}</span></md-chip-template>
+                                <md-icon class="sp-ship-remove" md-chip-remove md-svg-icon="tags-cancel"></md-icon>
+                            </md-chips>
+                        </md-input-container>
+                    </md-list-item>
+                    <md-divider></md-divider>
+                    <!--<md-list-item>-->
+                        <!--<md-input-container flex>-->
+                            <!--<label>Notes</label>-->
+                            <!--<textarea ng-blur="trimAfterBlur('notes',selectedNodeData.notes)" tabIndex="8" md-maxlength="500" maxlength="500" ng-change="changed('notes',selectedNodeData.notes)"  ng-model="selectedNodeData.notes"  name="goalNotes" id="goalNotes" aria-label="Goal Notes" rows="1"></textarea>-->
+                            <!--<div ng-messages="goalForm.goalNotes.$error" role="alert" multiple>-->
+                                <!--<div ng-message="md-maxlength">There is not more than 500 characters</div>-->
+                            <!--</div>-->
+                        <!--</md-input-container>-->
+                    <!--</md-list-item>-->
+                    <div>
+                        <sp-properties-comments sp-comments="selectedNodeData.comments"
+                                                on-comments-changed="changed('comments',selectedNodeData.comments)"
+                                                current-user="currentUser"
+                                                scroll-area-height="false"
+                        ></sp-properties-comments>
+                    </div>
+                    <md-divider></md-divider>
+                </md-content>
+            </form>
+        </div>
+        <div ng-show="isEntity(selectedNodeData)">
+            <form name="entityForm" id="entityForm">
+                <md-content>
+                    <md-list-item>
+                        <md-input-container flex md-no-float class="input-container-header-text">
+                        <textarea readonly class="sidenav-header-text entityTextarea" style="" aria-label="Goal"
+                                  ng-model="selectedNodeData.text"
+                                  ng-focus="textFocus(selectedNodeData, $event)"
+                                  ng-blur="textBlur(selectedNodeData, $event)"
+                                  ng-change="changed('text',selectedNodeData.text)"
+                                  rows="1" maxlength="255" tabIndex="1">
+                            </textarea>
+                        </md-input-container>
+                        <div class="statistic">
+                        <span class="item">
+                        <md-icon md-svg-icon="goto" ng-click="gotoOnClick(selectedNodeData.url)" aria-label="Go to {{selectedNodeData.entityType}}">
+                            <md-tooltip md-direction="bottom">Go to {{selectedNodeData.entityType}}</md-tooltip>
+                        </md-icon>
+                        </span>
+                        </div>
+                    </md-list-item>
+                    <div class="info">
+                    <span>
+                        {{selectedNodeData.entityType}}
+                    </span>
+                        <span ng-if="selectedNodeData.countSubObjects">
+                        <span class="separator">|</span>
+                        <span>{{selectedNodeData.countSubObjects}} sub-entities</span>
+                    </span>
+                    </div>
+                    <md-divider></md-divider>
+                    <sp-assign-user
+                            sp-name="selectedNodeData.text"
+                            sp-type="'Strategic Goal'"
+                            sp-positions="selectedNodeData.positions"
+                            sp-search-user="searchUsers"
+                            sp-add-position="addPositionAPI"
+                            sp-invite-user="inviteUserAPI"
+                            sp-search-positions="searchPositions"
+                            on-position-added="addPositionEntity(positionId)"
+                            on-positions-added="addPositionsEntity(positions)"
+                            on-position-removed="removePositionEntity(positionId)"
+                            on-permission-changed="onPermissionChanged(position)"
+                            sp-permission="permission"
+                            tabIndex="2"
+                    ></sp-assign-user>
+                    <md-divider></md-divider>
+                    <sp-notifications
+                            sp-name="selectedNodeData.text"
+                            sp-type="'Strategic Goal'"
+                            sp-notifications="selectedNodeData.notifications"
+                            tabIndex="3"
+                    ></sp-notifications>
+                    <md-divider></md-divider>
+                    <div>
+                        <sp-properties-comments sp-comments="selectedNodeData.comments"
+                                                on-comments-changed="changed('comments',selectedNodeData.comments)"
+                                                current-user="currentUser"
+                                                scroll-area-height="false"
+                        ></sp-properties-comments>
+                    </div>
+                    <md-divider></md-divider>
+                </md-content>
+            </form>
+        </div>
+        <div ng-show="isPrivate(selectedNodeData)">
+            <form name="privateForm" id="privateForm">
+                <md-content class="private">
+                    <md-list-item>
+                        <md-input-container flex md-no-float class="input-container-header-text private">
+                            <div class="privateIcon">
+                                <md-icon md-svg-icon="lock" aria-label="Private Entity">
+                                    <md-tooltip md-direction="bottom">Private Entity</md-tooltip>
+                                </md-icon>
+                            </div>
+                            <textarea readonly class="sidenav-header-text" style="" aria-label="Goal"
+                                      ng-model="selectedNodeData.text"
+                                      ng-focus="textFocus(selectedNodeData, $event)"
+                                      ng-blur="textBlur(selectedNodeData, $event)"
+                                      ng-change="changed('text',selectedNodeData.text)"
+                                      rows="1" maxlength="255" tabIndex="1">
+                        </textarea>
+
+                        </md-input-container>
+                    </md-list-item>
+                    <div class="info">
+                        <span>
+                            {{selectedNodeData.entityType || "Strategic Goal"}}
+                        </span>
+                    </div>
+                    <md-divider></md-divider>
+                    <md-list-item>
+                        <div class="textInfo">
+                            This entity is private, you are not allowed to see any details.
+                        </div>
+                    </md-list-item>
+                    <md-list-item>
+                        <md-button  class="button-invite md-primary button-request">Request for access</md-button>
+                    </md-list-item>
+                    <md-divider></md-divider>
+                </md-content>
+            </form>
+        </div>
+    </sp-right-sidebar>
+</div>
