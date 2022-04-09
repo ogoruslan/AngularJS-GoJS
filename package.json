@@ -11,7 +11,7 @@
     "angular-material": "^1.1.4",
     "angular-messages": "~1.5.0",
     "gojs": "~1.7.26",
-    "moment": "^2.18.1",
+    "moment": "^2.29.2",
     "normalize.css": "^3.0.3",
     "babel-polyfill": "^6.7.4"
   },
